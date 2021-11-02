@@ -18,8 +18,7 @@ function App() {
   };
 
   const handleStatus = status => {
-    setStatus(status);    
-    console.log(status);
+    setStatus(status);   
   }
 
   const handleCompletedTodo = () => {
@@ -29,7 +28,6 @@ function App() {
       )      
     );
     setStatus("completed");
-    console.log(todoCompleted);
   }
 
   const handleIncompletedTodo = () => {
@@ -39,7 +37,6 @@ function App() {
       )      
     );
     setStatus("incompleted");
-    console.log(todoIncompleted);
   }
 
   const allTodo = () => {
@@ -102,7 +99,6 @@ function App() {
         const result = await response.json();
         const array = await result.filter((x,i) => i<20?x:false);
         await setTodoList(array);
-        await console.log(todoList);
       }      
       handleTodoListAPI()
       // eslint-disable-next-line react-hooks/exhaustive-deps
