@@ -101,8 +101,6 @@ function App() {
       const array = result.filter((x,i) => i<20?x:false);
       setTodoList(array);
       console.log(todoList);
-      handleCompletedTodo();
-      handleIncompletedTodo();
     }
     handleTodoListAPI(); 
   },[]);
