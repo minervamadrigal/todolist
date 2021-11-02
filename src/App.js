@@ -17,8 +17,8 @@ function App() {
     );
   };
 
-  const handleStatus = status1 => {
-    setStatus(status1);    
+  const handleStatus = status => {
+    setStatus(status);    
     console.log(status);
   }
 
@@ -28,6 +28,7 @@ function App() {
         todo.completed === true ? todo : false       
       )      
     );
+    setStatus("completed");
     console.log(todoCompleted);
   }
 
@@ -37,73 +38,75 @@ function App() {
         todo.completed === false ? todo : false       
       )      
     );
+    setStatus("incompleted");
     console.log(todoIncompleted);
   }
 
   const allTodo = () => {
     return (todoList && todoList.length > 0 ? (
       todoList.map(todoList =>(
-    <TodoContainer 
-    key = {todoList.id} 
-    title ={todoList.title} 
-    state = {todoList.completed} 
-    handleCompleteTodo={handleCompleteTodo} 
-    id={todoList.id}
-     handleCompletedTodo={handleCompletedTodo} 
-    handleIncompletedTodo={handleIncompletedTodo} 
-    handleStatus={handleStatus}/>
-    ))
-    ):(
-    <Loader/>
-    ));
-  }
+        <TodoContainer 
+        key = {todoList.id} 
+        title ={todoList.title} 
+        state = {todoList.completed} 
+        handleCompleteTodo={handleCompleteTodo} 
+        id={todoList.id}
+        handleCompletedTodo={handleCompletedTodo} 
+        handleIncompletedTodo={handleIncompletedTodo} 
+        handleStatus={handleStatus}/>
+        ))
+      ):(
+        <Loader/>
+      ));
+    }
 
   const completedTodo = () => {
     return (todoCompleted && todoCompleted.length > 0 ? (
       todoCompleted.map(todoCompleted =>(
-    <TodoContainer 
-    key = {todoCompleted.id} 
-    title ={todoCompleted.title} 
-    state = {todoCompleted.completed} 
-    handleCompleteTodo={handleCompleteTodo} 
-    id={todoCompleted.id} 
-    handleCompletedTodo={handleCompletedTodo} 
-    handleIncompletedTodo={handleIncompletedTodo} 
-    handleStatus={handleStatus}/>
-    ))
-    ):(
-    <Loader/>
-    ));
+      <TodoContainer 
+        key = {todoCompleted.id} 
+        title ={todoCompleted.title} 
+        state = {todoCompleted.completed} 
+        handleCompleteTodo={handleCompleteTodo} 
+        id={todoCompleted.id} 
+        handleCompletedTodo={handleCompletedTodo} 
+        handleIncompletedTodo={handleIncompletedTodo} 
+        handleStatus={handleStatus}/>
+      ))
+      ):(
+        <Loader/>
+      ));
   }
 
   const incompletedTodo = () => {
     return (todoIncompleted && todoIncompleted.length > 0 ? (
       todoIncompleted.map(todoIncompleted =>(
-    <TodoContainer 
-    key = {todoIncompleted.id} 
-    title ={todoIncompleted.title} 
-    state = {todoIncompleted.completed} 
-    handleCompleteTodo={handleCompleteTodo} 
-    id={todoIncompleted.id}
-    handleCompletedTodo={handleCompletedTodo} 
-    handleIncompletedTodo={handleIncompletedTodo} 
-    handleStatus={handleStatus}/>
-    ))
-    ):(
-    <Loader/>
-    ));
-  }
+        <TodoContainer 
+          key = {todoIncompleted.id} 
+          title ={todoIncompleted.title} 
+          state = {todoIncompleted.completed} 
+          handleCompleteTodo={handleCompleteTodo} 
+          id={todoIncompleted.id}
+          handleCompletedTodo={handleCompletedTodo} 
+          handleIncompletedTodo={handleIncompletedTodo} 
+          handleStatus={handleStatus}/>
+        ))
+        ):(
+          <Loader/>
+        ));
+  }  
 
-  useEffect (() => {
-    const handleTodoListAPI = async () => {
-      const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-      const result = await response.json();
-      const array = result.filter((x,i) => i<20?x:false);
-      setTodoList(array);
-      console.log(todoList);
-    }
-    handleTodoListAPI(); 
-  },[]);
+  useEffect(() => {
+      const handleTodoListAPI = async () => {
+        const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+        const result = await response.json();
+        const array = await result.filter((x,i) => i<20?x:false);
+        await setTodoList(array);
+        await console.log(todoList);
+      }      
+      handleTodoListAPI()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
     return (
       <div className="App">
@@ -112,8 +115,7 @@ function App() {
         {status ==="all"? allTodo() : status ==="completed" ? completedTodo(): status ==="incompleted" ? incompletedTodo() :(<Loader/>)}
         </div>      
       </div>
-    );
-  
+    );  
 }
 
 export default App;

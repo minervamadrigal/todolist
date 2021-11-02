@@ -1,6 +1,6 @@
 import React from 'react';
 import "../styles/todocontainer.css";
-const TodoContainer = ({key,title,state, handleCompleteTodo, id,handleCompletedTodo, handleIncompletedTodo , handleStatus}) => {
+const TodoContainer = ({title,state, handleCompleteTodo, id,handleCompletedTodo, handleIncompletedTodo , handleStatus}) => {
     const localHandleCompleteTodo = () => {
         handleCompleteTodo(id)
         if(state===false){
@@ -13,6 +13,7 @@ const TodoContainer = ({key,title,state, handleCompleteTodo, id,handleCompletedT
     }
     return(
         <div id={id} className = 'todo-container'>
+            <h2 className="key" >{id}</h2>
             <h2 className = "title">{title}</h2>
             <button className={state ? "complete" : "reset"}
           onClick={localHandleCompleteTodo}>

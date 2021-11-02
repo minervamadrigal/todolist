@@ -6,7 +6,6 @@ const Header = ({handleCompletedTodo, handleIncompletedTodo, handleStatus}) => {
         handleStatus("all");
     }
 
-
     const localHandleCompletedTodo = () =>{
         handleCompletedTodo();
         handleStatus("completed");
