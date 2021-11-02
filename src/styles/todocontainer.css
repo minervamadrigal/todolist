@@ -19,3 +19,21 @@
     flex-wrap: wrap;
     padding: 10px;
 }
+
+.complete{
+    color: #000;
+    background-color: #0fc561;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+.reset{
+    color: #000;
+  background-color: #e71c1ca1;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: 2px solid #000000;
+  border-radius: 10px;
+}

@@ -17,8 +17,8 @@ function App() {
     );
   };
 
-  const handleStatus = status => {
-    setStatus(status);    
+  const handleStatus = status1 => {
+    setStatus(status1);    
     console.log(status);
   }
 
@@ -85,7 +85,9 @@ function App() {
     state = {todoIncompleted.completed} 
     handleCompleteTodo={handleCompleteTodo} 
     id={todoIncompleted.id}
-    handleCompletedTodo={handleCompletedTodo} handleIncompletedTodo={handleIncompletedTodo} handleStatus={handleStatus}/>
+    handleCompletedTodo={handleCompletedTodo} 
+    handleIncompletedTodo={handleIncompletedTodo} 
+    handleStatus={handleStatus}/>
     ))
     ):(
     <Loader/>
@@ -104,10 +106,6 @@ function App() {
     }
     handleTodoListAPI(); 
   },[]);
-  
-  useEffect(() => {
-
-  },[todoList])
 
     return (
       <div className="App">
