@@ -1,0 +1,21 @@
+.todo-container {
+    width: 22%;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.title{
+    font-size: 1rem;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    margin:auto;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
